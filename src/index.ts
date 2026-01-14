@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import subjectsRouter from './routes/subjects';
 
 const app = express();
 const PORT = 8000;
@@ -6,8 +7,10 @@ const PORT = 8000;
 // Middleware
 app.use(express.json());
 
+app.use('/api/subjects', subjectsRouter);
+
 // Routes
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (req, res) => {
   res.json({ message: 'Express + TypeScript server is running.' });
 });
 
